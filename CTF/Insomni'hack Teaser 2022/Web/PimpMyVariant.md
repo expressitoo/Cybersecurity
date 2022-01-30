@@ -1,5 +1,5 @@
 # PimpMyVariant (WEB)
-
+### Solves : 77
 ## Introduction
 
 So we fall on a page with covid variants list and apparently there's nothing in the page source code.
