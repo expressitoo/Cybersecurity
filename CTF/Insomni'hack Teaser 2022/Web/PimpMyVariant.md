@@ -67,7 +67,7 @@ Now we can see that the JWT secret is in the variants list and in the JWT token 
 
 ![image](https://user-images.githubusercontent.com/88440644/151675675-e27843d0-4a57-46bd-8b55-ae8babbdbdd7.png)
 
-## PHP Deserialization
+## PHP Object Injection
 
 So we can sign a token, and if you saw there was a serialized object in the JWT token with the parameter **isAdmin** set to 0 (false). Our goal is to modify this value to 1 (true) to be able to access **/log** endpoint because it's only accessible to *admin*. So let's forge a JWT token with **isAdmin** sets to **0** thanks to the python PyJWT library :
 
