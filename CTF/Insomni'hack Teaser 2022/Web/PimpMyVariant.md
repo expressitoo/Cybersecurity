@@ -147,7 +147,7 @@ class UpdateLogViewer
 
 So now just by seeing the `system()` call in `read()` function we can guess that it's a PHP deserialization vulnerability, by default the code will `cat` the content of `packgeName` log file but these are values we can control in the deserialization process.
 
-So to achieve our exploit we're going to append our desire object into the array deserialized.
+So to achieve our exploit we're going to append our desire object into the array deserialized. This can be possible because the class UpdateLogViewer is a singleton, so when we create our object with desired parameters, `UpdateLogViewer::instance()` is gonna grab our class containing our parameters.
 
 ```php
 public static function logFile():string
