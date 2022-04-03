@@ -93,7 +93,7 @@ second_stage = flat({
     })
 ```
 
-Now, we can launch the [exploit](https://), get a shell and get the flag : 
+Now, we can launch the [exploit](https://github.com/expressitoo/Cybersecurity/blob/main/Midnight%20Sun%20CTF%20Quals%202022/Speed1/files/exploit.py), get a shell and get the flag : 
 
 ![](https://i.imgur.com/Zy8yDzl.png)
 
